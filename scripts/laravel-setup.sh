@@ -6,19 +6,8 @@
 # echo "Bootstrap"
 # php artisan ui bootstrap
 
-# echo "Generate table files"
-# php artisan make:migration create_users_table
-# php artisan make:migration create_items_table
-# php artisan make:migration create_categories_table
-# php artisan make:migration create_comments_table
-# php artisan make:migration create_followings_table
-# php artisan make:migration create_manufactureres_table
-# php artisan make:migration create_images_table
-# php artisan make:migration create_reviews_table
-
 # echo "Create Sqlite file"
 # touch ./database/database.sqlite
-
 # echo "Recreat Sqlite file"
 # rm -rf  ./database/database.sqlite; touch ./database/database.sqlite
 
@@ -28,23 +17,35 @@
 # npm install && npm run dev
 # php artisan migrate
 
+# echo "Generate table files"
+# php artisan make:migration create_users_table
+# php artisan make:migration create_followings_table
+# php artisan make:migration create_categories_table
+# php artisan make:migration create_manufacturers_table
+# php artisan make:migration create_items_table
+# php artisan make:migration create_comments_table
+# php artisan make:migration create_reviews_table
+
 # echo "Generate Seeding files"
 # php artisan make:seeder UsersTableSeeder
-# php artisan make:seeder ItemTableSeeder
-# php artisan make:seeder CategoryTableSeeder
-# php artisan make:seeder CommentTableSeeder
-# php artisan make:seeder FollowTableSeeder
-# php artisan make:seeder ManufactureTableSeeder
+# php artisan make:seeder FollowingsTableSeeder
+# php artisan make:seeder CategoriesTableSeeder
+# php artisan make:seeder ManufacturersTableSeeder
+# php artisan make:seeder ItemsTableSeeder
+# php artisan make:seeder CommentsTableSeeder
+# php artisan make:seeder ReviewsTableSeeder
 
 # echo "Seeding data"
 # php artisan migrate:refresh --seed
 
 # echo "Generate model"
-# php artisan make:model Item
-# php artisan make:model Category
-# php artisan make:model Comment
-# php artisan make:model Follow
+# php artisan make:model Followings
+# php artisan make:model Categories
 # php artisan make:model Manufacture
+# php artisan make:model Items
+# php artisan make:model Comments
+# php artisan make:model Reviews
 
 # echo "Generate controller"
-# php artisan make:controller ItemController --resource
+# php artisan make:controller ItemsController --resource
+
