@@ -1,0 +1,164 @@
+# PHP Route
+php artisan route:list
+php artisan route:clear
+php artisan route:optimize
+
+#Task1:
+---
+## Configuration
+.env
+`DB_CONNECTION=sqlite`
+config/database.php
+`'default' => env('DB_CONNECTION', 'sqlite')`
+default blank file 
+`touch database/database.sqlite`
+### Migration
+### Creating tables
+`php artisan make:migration create_products_table`
+`php artisan make:migration create_manufacturer_table`
+(Touching tables by using Schema function)
+Schema::create()
+Schema::rename()
+Schema::drop()
+Schema::dropIfExists()
+Schema::table()
+### Execute migration
+`php artisan migrate`
+ Roll back recent migration
+ `php artisan migrate:rollback`
+ Roll back all
+ `php artisan migrate:reset`
+
+
+### Seeder
+### Import DB class
+`use Illuminate\Support\Facades\DB;`
+### Creating seeder file
+`php artisan make:seeder ProductsTableSeeder`
+`php artisan make:seeder ManufacturerTableSeeder`
+### Inserting data by editing run function
+`DB::table('products')->insert([]);`
+### Execute seeder
+Add seeding class list in DatabaseSeeder.php
+`$this->call(ProductTableSeeder::class);`
+`php artisan db:seed`
+`php artisan db:seed -class=ProductsTableSeeder`
+Clean up everything and seeding
+`php artisan migrate:refresh --seed`
+
+### Seeder Factory
+`function run(){`
+`\App\Model|User::factory(10)->create()`
+`}`
+## Main Func
+definition()
+## /App/User/Model
+`Class User extends Authenticatable{`
+`   use HasFactory, Notifiable;`
+`}`
+
+
+### Optional
+Creating foreign key
+```
+$table->integer('manufacturer_id')->unsigned();
+$table->foreign('manufacturer_id')->references('id')->on('manufacturer');
+```
+Make random seeder of foreign key
+```
+use Illuminate\Support\Facades\DB;
+$manufacturerId = DB::table('manufacturer')->pluck('id')->all();
+$collection = collect($manufacturerId);
+$randomForeignKey = intval($collection->random());
+```
+---
+#Task2:
+---
+### Creating model
+location: app/Models
+`php artisan make:model Product`
+Using
+```
+$product = new Product;
+$product->name = "ipod";
+$product->price = 19.99;
+$product->save();
+$product->id(); // generating id of newly created
+
+$product = Product::create([
+    'name' => 'ipod',
+    'price' => 555,
+]);
+```
+Mass assignment exception add property in Model  class
+`protected $fillable = ['name', 'price'];`
+
+php artisan make:controller ProductController --resource
+
+Adding relationship of Model
+```
+    function products() {
+        return $this->hasMany('App\Models\Product');
+    }
+```
+### Controller
+`php artisan make:controller ProductController --resource`
+
+### Authentication
+php artisan make:auth
+
+## Install auth Sacffold
+composer require laravel/breeze --dev
+php artisan breeze:install
+
+npm install && npm run dev
+php artisan migrate
+
+
+### Check user login 
+`Controller Request`
+
+## Authentication Functions
+`Auth::user();`
+`Auth::id();`
+`if( Auth::check() ) ? :`
+Opposite site, user is not login
+`Auth::guest()`
+
+## short auth
+@auth
+...
+@endauth
+
+@guset
+...
+@endguest
+
+---
+## Exsample auth 
+    @auth
+      {{ Auth::user()->name }}
+      <form method="post" action="{{ url('/logout') }}">
+        {{ csrf_field() }}
+        <button type="submit">
+          Logout
+        </button>
+      </form>   
+    @else
+      <a href="{{ route('login') }}">Login</a>
+      <a href="{{ route('register') }}">Logout</a>
+    @endauth
+---
+
+## FIX index page
+RouteServiceProvider -> HOME VAR
+## Single route
+Route::get('/', [ProductController::class], ['index']);
+
+### Middleware
+
+overwirte in class constructor
+
+function __construct(){
+    $this->middleware('auth', ['except' => ['index', 'show']]);
+}

@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+    web:
+        container_name: web-laravel
+        build:
+            context: ./docker/php-laravel
+            dockerfile: Dockerfile
+        ports:
+            - 8000:80
+        volumes:
+            - ./www:/www
+        networks:
+            - network1
+        command: php -S 0.0.0.0:80 -t /www/public/
+networks:
+    network1:
