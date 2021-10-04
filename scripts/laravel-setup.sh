@@ -2,9 +2,16 @@
 # echo "Lravel Installing"
 # composer create-project laravel/laravel example-app
 # echo "Laravel UI"
-# composer require laravel/ui
+
 # echo "Bootstrap"
+# composer require laravel/ui
 # php artisan ui bootstrap
+# php artisan ui bootstrap --auth
+# npm install; npm run dev
+#<!-- Scripts -->
+#<script src="{{ asset('js/app.js') }}" defer></script>
+#<!-- Styles -->
+#<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 # echo "Create Sqlite file"
 # touch ./database/database.sqlite
