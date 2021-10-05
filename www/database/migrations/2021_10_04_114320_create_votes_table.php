@@ -19,8 +19,8 @@ class CreateVotesTable extends Migration
             $table->integer('dislike')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('review_id')->references('id')->on('items')->onDelete('cascade');
+            $table->unsignedBigInteger('review_id');
+            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('cascade');
             $table->timestamps();
 });
     }

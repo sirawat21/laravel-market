@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ReviewsTableSeeder extends Seeder
+class ImagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,16 +15,16 @@ class ReviewsTableSeeder extends Seeder
     public function run()
     {
         /* Seeding comment lists */
-        DB::table('reviews')->insert([
-            'message' => 'Good product.',
-            'user_id' => 1,
+        DB::table('images')->insert([
             'item_id' => 1,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
-        DB::table('reviews')->insert([
-            'message' => 'Sutable price.',
-            'user_id' => 2,
+        DB::table('images')->insert([
             'item_id' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+        ]);
+        DB::table('images')->insert([
+            'item_id' => 3,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
     }
