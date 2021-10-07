@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>@yield('title')</title>
-        @include('components.head')
+        @include('c-components.head')
     </head>
     <body> 
-        @include('components.navbar')
+        @include('c-components.navbar')
         <div class="container" style="margin-top:10px;">
             @yield('content')
         </div>

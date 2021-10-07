@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+/* Controllers */
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\VotesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +19,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
+});
+
+Route::get('/sys/error', function () {
+    return view('pages.error');
+});
+
+/* Reset Database */
+Route::get('/sys/resetdb', function () {
+    $cmd = "cd ../;cd database;rm -f database.sqlite;
+        cp database.backup.sqlite database.sqlite;";
+    exec($cmd);
+    return redirect('/');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/* Route Controllers */
+Route::resource('item', ItemController::class);
+Route::resource('review', ReviewsController::class);
+Route::resource('vote', VotesController::class);
+
+/* Additional Route Controllers */
+// Route::get('item', [ItemsController::class, 'index'])->name('home');

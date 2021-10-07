@@ -58,4 +58,5 @@
 
 # echo "Generate controller"
 # php artisan make:controller ItemsController --resource
-
+# php artisan make:controller ReviewsController --resource
+# php artisan make:controller VotesController --resource
