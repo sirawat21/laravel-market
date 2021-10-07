@@ -14,6 +14,7 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('message');
             $table->enum('rate', [1, 2, 3, 4, 5]);

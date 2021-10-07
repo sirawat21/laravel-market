@@ -15,10 +15,10 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->primary('id')->increments();
-            $table->string('name')->unique()->nullable(false);
+            $table->id();
+            $table->string('name')->nullable(false)->unique();
             $table->text('description')->nullable(false);
-            $table->float('price'->nullable(false));
+            $table->float('price')->nullable(false);
             $table->string('origin_link')->nullable();
             $table->integer('manufacturers_id')->nullable(false)->unsigned();
             $table->foreign('manufacturers_id')->references('id')->on('manufacturers');

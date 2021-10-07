@@ -15,7 +15,7 @@ class CreateFollowingsTable extends Migration
     {
         Schema::create('followings', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->primary('id')->increments();
+            $table->id();
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('following')->unsigned();

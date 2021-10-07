@@ -17,6 +17,7 @@ class ReviewsTableSeeder extends Seeder
         /* Seeding comment lists */
         DB::table('reviews')->insert([
             'message' => 'Good product.',
+            'rate' => 5,
             'users_id' => 1,
             'items_id' => 1,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
@@ -24,6 +25,7 @@ class ReviewsTableSeeder extends Seeder
         ]);
         DB::table('reviews')->insert([
             'message' => 'Sutable price.',
+            'rate' => 3,
             'users_id' => 2,
             'items_id' => 2,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),

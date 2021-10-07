@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
         ]);
         // Creating Member account
         DB::table('users')->insert([
-            'id' => 2,
+            'id' => 3,
             'name' => 'Chris',
             'email' => 'chris@a.org',
             'password' => bcrypt('1234'),
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
         ]);
         // Creating Member account
         DB::table('users')->insert([
-            'id' => 2,
+            'id' => 4,
             'name' => 'Cara',
             'email' => 'cara@a.org',
             'password' => bcrypt('1234'),
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
         ]);
         // Creating Member account
         DB::table('users')->insert([
-            'id' => 2,
+            'id' => 5,
             'name' => 'Fred',
             'email' => 'fred@a.org',
             'password' => bcrypt('1234'),

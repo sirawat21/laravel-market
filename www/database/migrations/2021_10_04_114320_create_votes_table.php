@@ -14,6 +14,7 @@ class CreateVotesTable extends Migration
     public function up()
     {
         Schema::create('votes', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->integer('like')->default(0);
             $table->integer('dislike')->default(0);
