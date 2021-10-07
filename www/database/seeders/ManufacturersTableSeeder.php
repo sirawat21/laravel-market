@@ -17,31 +17,38 @@ class ManufacturersTableSeeder extends Seeder
         /* Seeding manufacturer lists */
         DB::table('manufacturers')->insert([
             'name' => 'America',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'Australia',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'Canada',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'China',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'United Kingdom',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'Korea',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('manufacturers')->insert([
             'name' => 'Japan',
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
     }
 }

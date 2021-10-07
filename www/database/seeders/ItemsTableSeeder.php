@@ -23,9 +23,9 @@ class ItemsTableSeeder extends Seeder
             'description' => 'Phone 13 Pro and iPhone 13 Pro Max do not include a power adapter or EarPods. Included in the box is a USB‑C to Lightning cable that supports fast charging and is compatible with USB‑C power adapters and computer ports.',
             'price' => 1849.00,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
-            'manufacturer_id' => 4,
-            'category_id' => 3,
-            'user_id' => 1
+            'created_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'manufacturers_id' => 4,
+            'users_id' => 1
         ]);
         DB::table('items')->insert([
             'id' => 2,
@@ -33,9 +33,9 @@ class ItemsTableSeeder extends Seeder
             'description' => 'The Wilson Blade 100L V7 is a new model that will be ideal for players searching for maneuverability as well as versatility. In fact, due to its head size of 645cm², this model will be easier than the 98 versions for playing thanks to the greater tolerance it will give during off-center shots.',
             'price' => 289.00,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
-            'manufacturer_id' => 1,
-            'category_id' => 4,
-            'user_id' => 2
+            'created_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'manufacturers_id' => 1,
+            'users_id' => 2
         ]);
         DB::table('items')->insert([
             'id' => 3,
@@ -44,9 +44,9 @@ class ItemsTableSeeder extends Seeder
             'price' => 379.00,
             'origin_link' => 'https://www.templeandwebster.com.au/Lotti-Framed-Canvas-Wall-Art-LTTC-ICON1119.html',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
-            'manufacturer_id' => 1,
-            'category_id' => 1,
-            'user_id' => 1
+            'created_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'manufacturers_id' => 1,
+            'users_id' => 1
         ]);
     }
 }

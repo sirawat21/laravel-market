@@ -21,7 +21,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
+        'phone',
+        'address',
+        'created_at',
+        'updated_at'
     ];
+    /* Relationship functions handler */
+    function items(){
+        return $this->hasMany('App\Models\Items');
+    }
+    function followings(){
+        return $this->hasMany('App\Models\Followings');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

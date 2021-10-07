@@ -17,15 +17,17 @@ class ReviewsTableSeeder extends Seeder
         /* Seeding comment lists */
         DB::table('reviews')->insert([
             'message' => 'Good product.',
-            'user_id' => 1,
-            'item_id' => 1,
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'users_id' => 1,
+            'items_id' => 1,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('reviews')->insert([
             'message' => 'Sutable price.',
-            'user_id' => 2,
-            'item_id' => 2,
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP')
+            'users_id' => 2,
+            'items_id' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
     }
 }

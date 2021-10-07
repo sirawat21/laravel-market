@@ -20,12 +20,16 @@ class FollowingsTableSeeder extends Seeder
         * following as whom is followed
         */
         DB::table('followings')->insert([
-            'user_id' => 1,
-            'following' => 2
+            'users_id' => 1,
+            'following' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('followings')->insert([
-            'user_id' => 1,
-            'following' => 2
+            'users_id' => 1,
+            'following' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
     }
 }

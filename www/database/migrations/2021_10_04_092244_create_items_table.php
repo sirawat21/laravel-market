@@ -14,21 +14,20 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->string('description');
-            $table->float('price');
+            $table->engine = 'InnoDB';
+            $table->primary('id')->increments();
+            $table->string('name')->unique()->nullable(false);
+            $table->text('description')->nullable(false);
+            $table->float('price'->nullable(false));
             $table->string('origin_link')->nullable();
-            $table->unsignedBigInteger('manufacturer_id');
-            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->integer('manufacturers_id')->nullable(false)->unsigned();
+            $table->foreign('manufacturers_id')->references('id')->on('manufacturers');
+            $table->integer('users_id')->nullable(false)->unsigned();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
         });
     }
-
     /**
      * Reverse the migrations.
      *

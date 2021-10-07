@@ -16,11 +16,13 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->string('message');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->timestamps();
+            $table->enum('rate', [1, 2, 3, 4, 5]);
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('items_id')->unsigned();
+            $table->foreign('items_id')->references('id')->on('items')->onDelete('cascade');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
         });
     }
 
