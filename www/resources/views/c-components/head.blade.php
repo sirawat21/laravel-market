@@ -9,4 +9,3 @@
 <script src="{{ asset('bootstrap4/js/bootstrap.min.js') }}"></script>
 <!-- Custome main CSS -->
 <link href="{{ asset('css/custom-main-style.css') }}" rel="stylesheet">
-

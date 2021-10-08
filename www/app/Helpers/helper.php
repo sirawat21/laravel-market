@@ -10,9 +10,9 @@ function helperTimeNow() {
 }
 
 /* Check authentication and redirect */
-function helperCheckAuth($message) {
+function helperCheckAuth() {
     if (!Auth::check()){
-        $err_message = "No permission to continue task.";
+        $err_message = "No permission to continue a task.";
         return view('pages.error')->with([ 'err_message' => $err_message ]);
     }
 }

@@ -35,8 +35,13 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('pages.item.create');
+    {   
+        helperCheckAuth(); // Check user is login yet
+
+        $manufacturers = Manufacturers::All();
+        return view('pages.item.create', [
+            'manufacturers' => $manufacturers
+        ]);
     }
 
     /**
