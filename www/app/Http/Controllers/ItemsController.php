@@ -52,7 +52,15 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        /* Insert Item info */
+
+        /* Image uploading */
+        $files = request()->file();
+        if (count($files) == 0) return 1; // if no image 
+        foreach($files as $file) {
+            var_dump($file);
+        }
+        
     }
 
     /**
