@@ -4,6 +4,11 @@
 */
 use Illuminate\Support\Facades\Auth;
 
+/* Get current time */
+function helperTimeNow() {
+    return date("Y-m-d H:i:s", time());
+}
+
 /* Check authentication and redirect */
 function helperCheckAuth($message){
     if (Auth::check()){

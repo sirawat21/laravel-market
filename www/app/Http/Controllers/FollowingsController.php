@@ -36,7 +36,21 @@ class FollowingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* Get user ID from current logined session */
+        $users_id = Auth::user()->id;
+
+        /* Check Authenticate */
+        helperCheckAuth("No permission to process Unfollow");
+
+        /* Insert following user record */
+        $user = Followings::create([
+            'users_id' => $users_id,
+            'following' => $request->following,
+            'created_at' => helperTimeNow(),
+            'updated_at' => helperTimeNow(),
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -91,6 +105,6 @@ class FollowingsController extends Controller
         ]);
         $following->delete();
 
-        return redirect("profile/".Auth::user()->id);
+        return redirect()->back();
     }
 }

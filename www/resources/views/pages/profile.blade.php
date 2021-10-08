@@ -71,30 +71,30 @@ use App\Models\Reviews;
 </h2>
 <div class="row">
   <div class="col-md-12">
-
       <!-- Following list -->
       @forelse ($followings as $following)
       @php
-          $followed = User::All()->where('id', $following['following']);
+          $followeds = User::All()->where('id', $following['following'])->toArray();
       @endphp
       <div class="card" style="width: 15rem; padding:5px 5px 5px 5px; margin: 5px 5px 5px 5px;">
- 
-        <a class="link-dark" href="{{ url('profile/'.$followed[1]['id']) }}">
-          <h5 class="card-title">{{ $followed[1]['name'] }}</h5>
+        @foreach ($followeds as $followed)
+        <a class="link-dark" href="{{ url('profile/'.$followed['id']) }}">
+          <h5 class="card-title">{{ $followed['name'] }}</h5>
         </a>
         <!-- Unfollow Button -->
         @if ($owner)
-          @include('c-components.unfollow', ['id' => $followed[1]['id']])
+          @include('c-components.unfollow', ['id' => $followed['id']])
         @endif
         <!-- End Unfollow Button -->
         <p class="card-text">
-          <b>Email:&nbsp;</b>{{ $followed[1]['email'] }}
+          <b>Email:&nbsp;</b>{{ $followed['email'] }}
           <br>
-          <b>Phone:&nbsp;</b>{{ $followed[1]['phone'] }}
+          <b>Phone:&nbsp;</b>{{ $followed['phone'] }}
           <br>
-          <b>Account Type:&nbsp;</b>{{ $followed[1]['type'] }}
+          <b>Account Type:&nbsp;</b>{{ $followed['type'] }}
         </p>
         <a href="#" class="btn btn-secondary">See Reviews</a>
+        @endforeach
       </div>
       @empty
         No following user.
