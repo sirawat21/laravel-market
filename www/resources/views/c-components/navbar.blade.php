@@ -30,12 +30,13 @@
         <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>{{ Auth::user()->name }} | {{ Auth::user()->type }}</span>
+            <span class="fa fa-user"></span>&nbsp;
+            <span>{{ Auth::user()->name }} | {{ Auth::user()->type }}</span>
           </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:100px;">
-          <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->id) }}"><span class="fa fa-user"></span>&nbsp;Profile</a>
+          <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->id) }}"><span class="fa fa-id-card"></span>&nbsp;My Profile</a>
           <a class="dropdown-item" href="#"><span class="fa fa-book"></span>&nbsp;My Items</a>
-          <a class="dropdown-item" href="#"><span class="fa fa-gavel"></span>&nbsp;Create Sale</a>
+          <a class="dropdown-item" href="#"><span class="fa fa-gavel"></span>&nbsp;Create Item</a>
           @if (Auth::user()->type == "moderator")
           <a class="dropdown-item" href="#"><span class="fa fa-cogs"></span>&nbsp;Manage</a>
           @endif

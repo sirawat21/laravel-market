@@ -23,11 +23,6 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('sys/error', function () {
-    // return view('pages.error',[ 'err_message' => $err_message]);
-    return view('pages.error');
-});
-
 /* Reset Database */
 Route::get('/sys/resetdb', function () {
     $cmd = "cd ../;cd database;rm -f database.sqlite;
