@@ -68,7 +68,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        /* Start create user */
+        $user_created = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -78,5 +79,7 @@ class RegisterController extends Controller
             'created_at' => date("Y-m-d H:i:s", time()),
             'updated_at' => date("Y-m-d H:i:s", time()),
         ]);
+        return $user_created;
+
     }
 }

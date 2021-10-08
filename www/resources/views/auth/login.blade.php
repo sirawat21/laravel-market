@@ -36,11 +36,11 @@
         <div class="col-md-9">
             <button type="submit" class="btn btn-dark">
                 <span class="fa fa-arrow-right" aria-hidden="true"></span>
-                <span>Login</span>
+                <span>{{ __('Login') }}</span>
             </button>
         </div>
         <div class="col-md-3">
-            <a class="nav-link" href="{{ url('register') }}">Register</a>                
+            <a class="nav-link" href="{{ url('register') }}">{{ __('Register') }}</a>                
         </div>
         </div>
         </div>

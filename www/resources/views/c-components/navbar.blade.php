@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <!-- Web Brand -->
   <a class="navbar-brand" href="{{ url('/') }}">
       <span class="fa fa-american-sign-language-interpreting"></span>
@@ -12,9 +12,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <!-- Left Side Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="{{ url('/') }}" id="/">Home</a>
-      </li>
+      </li> -->
       @auth
         @if (Auth::user()->type == "Moderator")
           <li class="nav-item">
@@ -33,19 +33,20 @@
           <span>{{ Auth::user()->name }} | {{ Auth::user()->type }}</span>
           </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:100px;">
-          <a class="dropdown-item" href="#"><span class="fa fa-user"></span>&nbsp;Profile</a>
+          <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->id) }}"><span class="fa fa-user"></span>&nbsp;Profile</a>
           <a class="dropdown-item" href="#"><span class="fa fa-book"></span>&nbsp;My Items</a>
           <a class="dropdown-item" href="#"><span class="fa fa-gavel"></span>&nbsp;Create Sale</a>
           @if (Auth::user()->type == "moderator")
           <a class="dropdown-item" href="#"><span class="fa fa-cogs"></span>&nbsp;Manage</a>
           @endif
+          <!-- Logout -->
+          <div class="dropdown-divider"></div>
           <form method="POST" action="{{ url('logout') }}">
             @csrf
-            <br>
-            <button class="btn btn-sm btn-danger" type="submit" style="width:100%;">
-              <span class="fa fa-sign-out"></span>
-              <span style="font-size:16px">Logout</span>
-            </button>
+            <a style="cursor: pointer;" class="dropdown-item" onclick="event.preventDefault();this.closest('form').submit();">
+              <span class="fa fa-power-off"></span>
+              <span style="font-size:16px">{{ __('Logout') }}</span>
+            </a>
           </form>
         </div>
       </li>

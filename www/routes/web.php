@@ -34,11 +34,15 @@ Route::get('/sys/resetdb', function () {
     return redirect('/');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
 require __DIR__.'/auth.php';
 Auth::routes();
+
+/* Route User */
+require __DIR__.'/user.php';
 
 /* Route Controllers */
 Route::resource('item', ItemController::class);

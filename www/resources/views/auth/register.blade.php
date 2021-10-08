@@ -84,11 +84,13 @@
         <div class="mb-3">
         <div class="container">
         <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <button type="submit" class="btn btn-dark">
-                <span class="fa fa-arrow-right" aria-hidden="true"></span>
                 <span>{{ __('Register') }}</span>
             </button>
+        </div>
+        <div class="col-md-3">
+            <a class="nav-link" href="{{ url('login') }}">{{ __('Login') }}</a>                
         </div>
         </div>
         </div>
