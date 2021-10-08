@@ -162,3 +162,10 @@ overwirte in class constructor
 function __construct(){
     $this->middleware('auth', ['except' => ['index', 'show']]);
 }
+
+## Golbal function
+composer.json
+  "autoload": {
+    "files": []
+  }
+composer dump-autoload

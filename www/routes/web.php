@@ -1,11 +1,12 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /* Controllers */
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\VotesController;
+use App\Http\Controllers\FollowingsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/sys/error', function () {
+Route::get('sys/error', function () {
+    // return view('pages.error',[ 'err_message' => $err_message]);
     return view('pages.error');
 });
 
@@ -48,6 +50,7 @@ require __DIR__.'/user.php';
 Route::resource('item', ItemController::class);
 Route::resource('review', ReviewsController::class);
 Route::resource('vote', VotesController::class);
+Route::resource('following', FollowingsController::class);
 
 /* Additional Route Controllers */
 // Route::get('item', [ItemsController::class, 'index'])->name('home');

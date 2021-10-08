@@ -4,6 +4,6 @@
  */
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CUserController;
+use App\Http\Controllers\CustomUserController;
 
-Route::get('/profile/{id}', [CUserController::class, 'show']);
+Route::get('/profile/{id}', [CustomUserController::class, 'show']);
