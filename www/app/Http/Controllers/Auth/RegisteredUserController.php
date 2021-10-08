@@ -36,14 +36,25 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
+            'type' => ['in:member, moderator'],
+            'phone' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
         ]);
 
+        /* Create User Account */
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'type' => $request->type,
+            'address' => $request->address,
+            'created_at' => timestamp(),
+            'updated_at' => timestamp(),
         ]);
+        /* Create Following belong to User Account */
 
         event(new Registered($user));
 

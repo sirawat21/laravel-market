@@ -30,7 +30,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-            <input name="email" type="password" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
+            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
         </div>
         <!-- Pass -->
         <div class="mb-3">
@@ -47,8 +47,39 @@
             <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
             <input name="password-confirm" id="password-confirm" type="password" class="form-control">
         </div>
-
-
+        <!-- Type Selection -->
+        <div class="mb-3">
+            <label for="type" class="form-label">{{ __('Account Type') }}</label>
+            @error('type')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <select if="type" name="type" class="form-control">
+                <option value="member" selected>Member</option>
+                <option value="moderator">Moderator</option>
+            </select>
+        </div>
+        <!-- Phone -->
+        <div class="mb-3">
+            <label for="phone" class="form-label">{{ __('Phone Numbers') }}</label>
+            @error('phone')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone') }}">
+        </div>
+        <!-- Address -->
+        <div class="mb-3">
+            <label for="address" class="form-label">{{ __('Address') }}</label>
+            @error('address')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" id="address" value="{{ old('address') }}">
+        </div>
 
         <div class="mb-3">
         <div class="container">
