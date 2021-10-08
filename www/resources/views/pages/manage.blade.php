@@ -1,10 +1,9 @@
 @extends('c-layouts.main') 
-@section('title', 'My Items') 
+@section('title', 'Manage') 
 @section('content')
 <h2>
-  <span class="fa fa-book"></span> My Items
+  <span class="fa fa-cogs"></span> Manage
 </h2>
 <div class="row"> 
-  {{ $id }}
 </div> 
 @endsection

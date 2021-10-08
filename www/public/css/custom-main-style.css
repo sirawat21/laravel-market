@@ -2,18 +2,26 @@
 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
+.bg-gold{
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
 .card-follower {
     width: 15rem; 
     padding:10px 10px 10px 10px; 
     margin: 5px 5px 5px 5px;
 }
+
 .card-follower:hover {
     background-color: #f2f2f2;
 }
+
 .not-href {
     color: black;
     text-decoration: none;
 }
+
 .not-href:hover {
     color: #800000;
     text-decoration: none;

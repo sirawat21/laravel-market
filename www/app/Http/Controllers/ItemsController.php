@@ -3,6 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
+/* Models */
+use App\Models\Items;
+use App\Models\User;
+use App\Models\Images;
+use App\Models\Manufacturers;
+use App\Models\Reviews;
+
 
 class ItemsController extends Controller
 {
@@ -13,7 +23,10 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        //
+        $items = Items::All();
+        return view('pages.market', [
+            'items'=> $items,
+        ]);
     }
 
     /**
@@ -23,7 +36,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.item.create');
     }
 
     /**
@@ -34,7 +47,7 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -45,7 +58,9 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.item.list', [
+            'id' => $id,
+        ]);
     }
 
     /**

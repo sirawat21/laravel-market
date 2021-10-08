@@ -1,8 +1,8 @@
 @extends('c-layouts.main') 
-@section('title', 'Show Item') 
+@section('title', 'Item Detail') 
 @section('content')
 <h2>
-  <span class="fas"></span> Header
+  <span class="fas"></span> Item Detail
 </h2>
 <div class="row"> 
 </div> 

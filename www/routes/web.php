@@ -19,9 +19,7 @@ use App\Http\Controllers\FollowingsController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/',[ItemsController::class, 'index']);
 
 /* Reset Database */
 Route::get('/sys/resetdb', function () {
@@ -42,7 +40,7 @@ Auth::routes();
 require __DIR__.'/user.php';
 
 /* Route Controllers */
-Route::resource('item', ItemController::class);
+Route::resource('item', ItemsController::class);
 Route::resource('review', ReviewsController::class);
 Route::resource('vote', VotesController::class);
 Route::resource('following', FollowingsController::class);

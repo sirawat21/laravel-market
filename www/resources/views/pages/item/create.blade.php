@@ -2,7 +2,7 @@
 @section('title', 'Create Item') 
 @section('content')
 <h2>
-  <span class="fas"></span> Create Item
+  <span class="fa fa-gavel"></span> Create Item
 </h2>
 <div class="row"> 
 </div> 

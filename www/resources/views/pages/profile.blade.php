@@ -104,7 +104,10 @@ use App\Models\Reviews;
         @endforeach
       </div>
       @empty
-        No following user.
+        <div class="alert alert-light" role="alert">
+          <span class="fa fa-exclamation"></span>&nbsp;  
+          <span>No Following lists.</span>
+        </div>
       @endforelse
       <!-- End Following list -->
 </div>

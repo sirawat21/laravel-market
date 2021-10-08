@@ -35,8 +35,8 @@
           </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:100px;">
           <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->id) }}"><span class="fa fa-id-card"></span>&nbsp;My Profile</a>
-          <a class="dropdown-item" href="#"><span class="fa fa-book"></span>&nbsp;My Items</a>
-          <a class="dropdown-item" href="#"><span class="fa fa-gavel"></span>&nbsp;Create Item</a>
+          <a class="dropdown-item" href="{{ url('item/'.Auth::user()->id) }}"><span class="fa fa-book"></span>&nbsp;My Items</a>
+          <a class="dropdown-item" href="{{ url('item/create') }}"><span class="fa fa-gavel"></span>&nbsp;Create Item</a>
           @if (Auth::user()->type == "moderator")
           <a class="dropdown-item" href="#"><span class="fa fa-cogs"></span>&nbsp;Manage</a>
           @endif
