@@ -7,6 +7,7 @@
     .review-list {
         margin-top:15px;
         margin-bottom:15px;
+        padding: 10px 10px 10px 10px;
     }
 </style>
 <div class="col-md-12">
@@ -22,6 +23,25 @@
                 {{ $review->updated_at }}
             </p>
             <p>Rate: {{ str_repeat("★", $review->rate) }}</p>
+        </div>
+        <div class="col-md-12">
+            <p class="badge badge-pill badge-dark" style="font-size:15px;">
+                <span class="fa fa-thumbs-up "></span><span> 0 </span>
+                <span>&nbsp;<b>|</b>&nbsp;</span>
+                <span class="fa fa-thumbs-down"></span><span> 0 </span>
+                <form>
+                    <button class="btn btn-sm btn-outline-success">
+                        <span class="fa fa-thumbs-up"></span>
+                        Like
+                    </button>
+                </form>
+                <!-- <button class="btn btn-sm btn-outline-danger">
+                    <span class="fa fa-thumbs-down"></span>
+                    Dislike 
+                </button> -->
+            </p>
+        </div>
+        <div class="col-md-12">
             <p>{{ $review->message }}</p>
         </div>
     </div>
