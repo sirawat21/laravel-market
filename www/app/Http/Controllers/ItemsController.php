@@ -16,6 +16,16 @@ use App\Models\Reviews;
 
 class ItemsController extends Controller
 {
+
+    public function __construct() {
+        /* Regist permited controller */
+        $this->middleware('auth', [
+            'only' => [
+                'create',
+            ]
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +46,7 @@ class ItemsController extends Controller
      */
     public function create()
     {   
-        helperCheckAuth(); // Check user is login yet
+        // helperCheckAuth(); // Check user is login yet
 
         $manufacturers = Manufacturers::All();
         return view('pages.item.create', [

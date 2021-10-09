@@ -11,7 +11,7 @@ function helperTimeNow() {
 
 /* Check authentication and redirect */
 function helperCheckAuth() {
-    if (!Auth::check()){
+    if (Auth::check() == false){
         $err_message = "No permission to continue a task.";
         return view('pages.error')->with([ 'err_message' => $err_message ]);
     }
