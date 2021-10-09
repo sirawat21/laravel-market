@@ -5,6 +5,8 @@
     <span class="fa fa-gavel"></span> Create Item
 </h2>
 <div class="row">
+<!-- Notification Message -->
+@include('c-components.notification-bar', ['status' => 'info'])
 <div class="col-md-12">
 <div class="card c-box-shadow">
 <div class="card-body">

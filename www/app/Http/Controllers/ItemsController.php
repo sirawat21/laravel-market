@@ -22,15 +22,12 @@ class ItemsController extends Controller
         $this->middleware('auth', [
             'only' => [
                 'create',
+                'store',
             ]
         ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /* Display a listing of the resource */
     public function index()
     {
         $items = Items::All();
@@ -39,46 +36,36 @@ class ItemsController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /* Show the form for creating a new resource */
     public function create()
     {   
-        // helperCheckAuth(); // Check user is login yet
-
+        $noti = helperNotificationGet();
         $manufacturers = Manufacturers::All();
+
         return view('pages.item.create', [
+            'notification' => $noti,
             'manufacturers' => $manufacturers
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /* Store a newly created resource in storage */
     public function store(Request $request)
     {
         /* Insert Item info */
 
         /* Image uploading */
         $files = request()->file();
-        if (count($files) == 0) return 1; // if no image 
+        if (count($files) == 0) {
+            helperNotification(['Image upload at least one picture.']);
+            return redirect()->back();
+        } 
         foreach($files as $file) {
             var_dump($file);
         }
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Display the specified resource. */
     public function show($id)
     {
         return view('pages.item.list', [

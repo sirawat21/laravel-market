@@ -4,6 +4,24 @@
 */
 use Illuminate\Support\Facades\Auth;
 
+/* Session Message create */
+function helperNotification($arr) {
+    if (session()->exists('notification')) {
+        $arr_old = session('notification');
+        $arr = array_merge($arr_old, $arr);
+    }
+    session(['notification' => $arr]);
+}
+/* Session Message get */
+function helperNotificationGet() {
+    $notification = null;
+    if (session()->exists('notification')) {
+        $notification = session('notification');
+        session()->forget('notification');
+    }
+    return $notification;
+}
+
 /* Get current time */
 function helperTimeNow() {
     return date("Y-m-d H:i:s", time());
