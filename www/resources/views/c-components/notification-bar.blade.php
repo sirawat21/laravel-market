@@ -3,7 +3,11 @@
     <div class="col-md-12">
         <div class="alert alert-{{ $status }} alert-dismissible fade show" role="alert">
             @if ($status == "danger")
-                <span class="fa fa-exclamation"></span>
+                <span class="fa fa-exclamation" aria-hidden="true"></span>
+            @elseif ($status == "info")
+                <span class="fa fa-info" aria-hidden="true"></span>
+            @elseif ($status == "success")
+                <span class="fa fa-check" aria-hidden="true"></span>
             @endif
             <span>
                 {{ $message }}
