@@ -39,7 +39,7 @@ class ItemsController extends Controller
     /* Show the form for creating a new resource */
     public function create()
     {   
-        $noti = helperNotificationGet();
+        $noti = helperNotificationGet(); // get notification
         $manufacturers = Manufacturers::All();
 
         return view('pages.item.create', [
@@ -51,9 +51,13 @@ class ItemsController extends Controller
     /* Store a newly created resource in storage */
     public function store(Request $request)
     {
+
+        $r = validateCreateItem($request); // varidate client request
+        
         /* Insert Item info */
 
         /* Image uploading */
+        /*
         $files = request()->file();
         if (count($files) == 0) {
             helperNotification(['Image upload at least one picture.']);
@@ -62,7 +66,7 @@ class ItemsController extends Controller
         foreach($files as $file) {
             var_dump($file);
         }
-        
+        */
     }
 
     /* Display the specified resource. */

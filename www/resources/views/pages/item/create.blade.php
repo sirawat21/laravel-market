@@ -99,7 +99,7 @@
                      <strong>{{ $message }}</strong>
                      </span>
                      @enderror
-                     <textarea name="origin_link" type="url" style="min-height: 168px;"
+                     <textarea name="description" type="url" style="min-height: 168px;"
                         class="form-control @error('description') is-invalid @enderror" 
                         id="description" value="{{ old('description') }}"></textarea>
                   </div>

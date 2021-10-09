@@ -8,6 +8,16 @@ use App\Models\Followings;
 
 class FollowingsController extends Controller
 {
+    public function __construct() {
+        /* Regist permited controller */
+        $this->middleware('auth', [
+            'only' => [
+                'store',
+                'destroy',
+            ]
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +48,6 @@ class FollowingsController extends Controller
     {
         /* Get user ID from current logined session */
         $users_id = Auth::user()->id;
-
-        /* Check Authenticate */
-        helperCheckAuth("No permission to process Unfollow");
 
         /* Insert following user record */
         $user = Followings::create([
@@ -95,9 +102,6 @@ class FollowingsController extends Controller
      */
     public function destroy($id)
     {
-        /* Check Authenticate */
-        helperCheckAuth("No permission to process Unfollow");
-
         /* Delete Following user */
         $following = Followings::where([
             ['users_id', '=', Auth::user()->id],
