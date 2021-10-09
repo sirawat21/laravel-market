@@ -205,7 +205,7 @@ class ItemsController extends Controller
         $item->description = $request->description;
         $item->updated_at = helperTimeNow();
         $item->save();
-        return redirect('item/'.$id.'/edit');
+        return redirect('item/'.$id);
     } // end update function
 
     /* Remove the specified resource from storage. */

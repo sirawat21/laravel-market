@@ -2,10 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
+use App\Models\Items;
+use App\Models\User;
+use App\Models\Reviews;
+
 
 class ReviewsController extends Controller
 {
+    public function __construct() {
+        /* Regist permited controller */
+        $this->middleware('auth', [
+            'only' => [
+                'create',
+                'store',
+                'edit',
+                'update',
+                'destroy'
+            ]
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +42,6 @@ class ReviewsController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +52,15 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Reviews::create([
+            'message'  => $request->message,
+            'rate'     => $request->rating,
+            'items_id' => $request->items_id,
+            'users_id' => Auth::user()->id,
+            'created_at' => helperTimeNow(),
+            'updated_at' => helperTimeNow()
+        ]);
+        return redirect()->back();
     }
 
     /**

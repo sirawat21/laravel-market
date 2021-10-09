@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('message');
-            $table->enum('rate', [1, 2, 3, 4, 5]);
+            $table->enum('rate', [0, 1, 2, 3, 4, 5]);
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('items_id')->unsigned();

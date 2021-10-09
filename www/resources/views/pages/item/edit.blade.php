@@ -18,7 +18,7 @@
         <span class="head-item-font">{{ $item->name }}</span>
       <!-- Delete Link -->
       @auth
-        @if (Auth::user()->id == $item->users_id || Auth::user()->type == "moderator")
+        @if (Auth::user()->type == "moderator")
           <form method="POST" action="{{ url('item/'.$item->id) }}">
                 @method('delete')
                 @csrf

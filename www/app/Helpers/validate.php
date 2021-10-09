@@ -21,7 +21,7 @@ function validateCreateItem(Request $request) {
         'name' => 'required|string|max:200',
         'description' => 'required|string|min:30|max:3000',
         'price' => 'required|numeric|min:1',
-        'origin_link' => 'nullable|string|min:0|max:300',
+        'origin_link' => 'nullable|string|min:0|max:1000',
         'manufacturers_id' => 'required|numeric'
     ];
     /* Validate client requests */

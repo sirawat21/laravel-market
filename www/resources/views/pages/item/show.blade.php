@@ -13,7 +13,7 @@
         <span class="head-item-font">{{ $item->name }}</span>
       <!-- Edit Link -->
       @auth
-        @if (Auth::user()->id == $item->users_id || Auth::user()->type == "moderator")
+        @if (Auth::user()->type == "moderator")
           <a type="button" href='{{ url("item/$item->id/edit") }}'
             class="btn btn-sm btn-outline-warning">
             <span class="fa fa-wrench"></span>
@@ -75,6 +75,16 @@
     </div>
   </div>
 </div>
+<!-- Reviews -->
+<div class="row">
+@auth
+    <div class="col-md-12">
+        @include('c-components.review-create-form')
+    </div>
+    @include('c-components.reviews')
+</div>
+@endauth
+<!-- Reviews -->
 @endsection
 
 

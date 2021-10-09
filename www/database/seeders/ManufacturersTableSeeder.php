@@ -16,7 +16,7 @@ class ManufacturersTableSeeder extends Seeder
     {
         /* Seeding manufacturer lists */
         DB::table('manufacturers')->insert([
-            'name' => 'America',
+            'name' => 'American',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
             'created_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
