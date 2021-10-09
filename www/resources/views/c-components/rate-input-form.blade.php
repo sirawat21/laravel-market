@@ -1,12 +1,12 @@
 <style amp-custom>
   .rating {
-    --star-size: 3;  /* use CSS variables to calculate dependent dimensions later */
+    --star-size: 2;  /* use CSS variables to calculate dependent dimensions later */
     padding: 0;  /* to prevent flicker when mousing over padding */
     border: none;  /* to prevent flicker when mousing over border */
     unicode-bidi: bidi-override; direction: rtl;  /* for CSS-only style change on hover */
     text-align: left;  /* revert the RTL direction */
     user-select: none;  /* disable mouse/touch selection */
-    font-size: 3em;  /* fallback - IE doesn't support CSS variables */
+    font-size: 2em;  /* fallback - IE doesn't support CSS variables */
     font-size: calc(var(--star-size) * 1em);  /* because `var(--star-size)em` would be too good to be true */
     cursor: pointer;
     /* disable touch feedback on cursor: pointer - http://stackoverflow.com/q/25704650/1269037 */
@@ -19,7 +19,7 @@
     display: inline-block;
     position: relative;
     width: 1.1em;  /* magic number to overlap the radio buttons on top of the stars */
-    width: calc(var(--star-size) / 3 * 1.1em);
+    width: calc(var(--star-size) / 2 * 1.1em);
   }
   .rating > *:hover,
   .rating > *:hover ~ label,
@@ -52,8 +52,8 @@
     color: red;
   }
 </style>
-
-  <fieldset class="rating">
+Rate:
+<fieldset class="rating">
     <input name="rating" type="radio" id="rating5" value="5" on="change:rating.submit">
     <label for="rating5" title="5 stars">☆</label>
 

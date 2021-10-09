@@ -51,10 +51,12 @@ class ReviewsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+        $rating = (isset($request->rating)) ?  $request->rating : 1;
+        // $rating = (isset($request->rating)) ?  $request->rating : 0;
         Reviews::create([
             'message'  => $request->message,
-            'rate'     => $request->rating,
+            'rate'     => $rating,
             'items_id' => $request->items_id,
             'users_id' => Auth::user()->id,
             'created_at' => helperTimeNow(),

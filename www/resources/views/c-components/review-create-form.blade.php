@@ -5,13 +5,13 @@
 </style>
 <div class="row review-form">
     <div class="col-md-12">
-        <div class="card c-box-shadow">
+        <div class="card c-box-shadow" style="padding: 10px 10px 10px 10px;">
 <form method="post" action="{{ url('review') }}">
     @csrf
     <input type="hidden" name="items_id" value="{{ $item->id }}">
     <div>
         <label class="form-control-label" for="message">
-            Comment
+            Comment:
         </label>
         <textarea required rows="3" class="form-control" id="message" name="message"></textarea>
     </div>
