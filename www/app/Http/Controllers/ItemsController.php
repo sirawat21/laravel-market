@@ -51,9 +51,13 @@ class ItemsController extends Controller
     /* Store a newly created resource in storage */
     public function store(Request $request)
     {
+        /* Varidate client request */
+        $validated = validateCreateItem($request); 
+        if($validated->fails()){ 
+            // if error redirect back with error messages
+            return redirect()->back()->withErrors($validated->messages());
+        }
 
-        $r = validateCreateItem($request); // varidate client request
-        
         /* Insert Item info */
 
         /* Image uploading */

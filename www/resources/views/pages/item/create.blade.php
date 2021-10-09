@@ -25,9 +25,9 @@
                      <label for="name" class="form-label input-group-text">{{ __('Item Name') }}</label>
                   </div>
                   @error('name')
-                  <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                  </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                   @enderror
                   <input name="name" type="text" 
                      class="form-control @error('name') is-invalid @enderror" 
