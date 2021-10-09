@@ -77,13 +77,14 @@
 </div>
 <!-- Reviews -->
 <div class="row">
-@auth
-    <div class="col-md-12">
-        @include('c-components.review-create-form')
-    </div>
-    @include('c-components.reviews')
+  @auth
+  <div class="col-md-12">
+    @include('c-components.review-create-form')
+  </div>
+  @endauth
+  @include('c-components.reviews')
 </div>
-@endauth
+
 <!-- Reviews -->
 @endsection
 

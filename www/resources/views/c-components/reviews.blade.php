@@ -2,7 +2,6 @@
     use App\Models\Reviews;
     use App\Models\User;
     $reviews = Reviews::All()->where('items_id', $item->id);
-    $current_user = User::find(Auth::user()->id);
 @endphp
 <style>
     .review-list {
@@ -15,10 +14,14 @@
     <div class="card c-box-shadow review-list">
         <div class="col-md-12">
             <p>
-                {{ User::find($review->users_id)->name }}|
+                <a href="{{ url('profile/'.$review->users_id) }}">
+                    <span class="fa fa-user"></span>
+                    {{ User::find($review->users_id)->name }}
+                </a>
+                <span><b>|</b></span>
                 {{ $review->updated_at }}
             </p>
-            <p>Rate: {{ $review->rate }}</p>
+            <p>Rate: {{ str_repeat("★", $review->rate) }}</p>
             <p>{{ $review->message }}</p>
         </div>
     </div>
