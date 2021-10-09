@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Followings;
 use App\Models\Reviews;
+use App\Models\Items;
 
 class CustomUserController extends Controller
 {
+    /* Show Profile */
     public function show($id)
     {
         /* Get user profile info */
@@ -49,6 +51,15 @@ class CustomUserController extends Controller
             'current_profile_id' => $id,
             'followings' => $followings,
             'followed' => $followed
+        ]);
+    }
+
+    /* Show Profile Item*/
+    public function item($id)
+    {
+        $items = Items::All()->where('users_id', '=', $id);
+        return view('pages.profile-item', [
+            'items'=> $items,
         ]);
     }
 }
