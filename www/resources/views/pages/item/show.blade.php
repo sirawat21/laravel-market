@@ -4,6 +4,8 @@
 <h2>
   <span class="fas"></span> Item Detail
 </h2>
-<div class="row"> 
+<div class="row">
+  {{ var_dump($item_imgs) }}
+  {{ var_dump($item) }}
 </div> 
 @endsection

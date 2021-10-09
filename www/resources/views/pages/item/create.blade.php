@@ -24,11 +24,6 @@
                   <div class="input-group-prepend">
                      <label for="name" class="form-label input-group-text">{{ __('Item Name') }}</label>
                   </div>
-                  @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
                   <input name="name" type="text" 
                      class="form-control @error('name') is-invalid @enderror" 
                      id="name" value="{{ old('name') }}">
@@ -39,11 +34,6 @@
                   <div class="input-group-prepend">
                      <label for="price" class="form-label input-group-text">{{ __('Price') }}</label>
                   </div>
-                  @error('price')
-                  <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
                   <input name="price" type="number" style="text-align: right;"
                      class="form-control @error('price') is-invalid @enderror" 
                      id="price" value="{{ old('price') }}">
@@ -76,11 +66,6 @@
                   <div class="input-group-prepend">
                      <label for="origin_link" class="form-label input-group-text">{{ __('Original URL') }}</label>
                   </div>
-                  @error('origin_link')
-                  <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
                   <input name="origin_link" type="url" 
                      class="form-control @error('origin_link') is-invalid @enderror" 
                      id="origin_link" value="{{ old('origin_link') }}"
@@ -94,14 +79,9 @@
                   <!-- Item Infomation TextArea Form -->
                   <div class="mb-3">
                      <label for="description" class="form-label">{{ __('Description') }}</label>
-                     @error('description')
-                     <span class="invalid-feedback" role="alert">
-                     <strong>{{ $message }}</strong>
-                     </span>
-                     @enderror
                      <textarea name="description" type="url" style="min-height: 168px;"
                         class="form-control @error('description') is-invalid @enderror" 
-                        id="description" value="{{ old('description') }}"></textarea>
+                        id="description">{{ old('description') }}</textarea>
                   </div>
                 </div>
                 <!-- End Column 3 -->
