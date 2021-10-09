@@ -21,6 +21,10 @@ use App\Http\Controllers\FollowingsController;
 
 Route::get('/',[ItemsController::class, 'index']);
 
+Route::get('/document', function () {
+    return view('pages.document');
+});
+
 /* Reset Database */
 Route::get('/sys/resetdb', function () {
     $cmd = "cd ../;cd database;rm -f database.sqlite;

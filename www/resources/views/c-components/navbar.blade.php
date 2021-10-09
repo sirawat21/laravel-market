@@ -12,9 +12,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <!-- Left Side Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}" id="/">Home</a>
-      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/document') }}" id="document">Documentation</a>
+      </li>
       @auth
         @if (Auth::user()->type == "Moderator")
           <li class="nav-item">
