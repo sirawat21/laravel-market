@@ -17,6 +17,8 @@
         } else {
             $img = $img->getAttribute('image');
         }
+    /* Cuted Item name */
+    $item_name = (strlen($item->name) > 20) ? substr($item->name, 0, 20)."..." : $item->name;
 @endphp
 <div class="card c-box-shadow item-card">
     <a type="button" href="{{ url('item/'.$item->id) }}">
@@ -24,8 +26,8 @@
     </a>
     <div class="card-body">
         <a class="card-head-a" href="{{ url('item/'.$item->id) }}">
-            <h5 class="card-title card-head-a">
-                {{ $item->name }}
+            <h5 class="card-title">
+                {{ $item_name }}
             </h5>
         </a>
         <div class="card-text">

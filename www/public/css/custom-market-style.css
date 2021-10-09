@@ -1,5 +1,5 @@
 .item-card {
-    width: 250px;
+    width: 260px;
     margin: 5px 5px 5px 5px;
 }
 .item-card:hover {
@@ -10,8 +10,8 @@
     transform: translate(-3px, -3px);
 }
 .item-card-img {
-    max-height: 250px;
-    max-width: 250px;
+    max-height: 260px;
+    max-width: 260px;
 }
 .card-head-a {
     text-decoration: none;
