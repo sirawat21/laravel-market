@@ -6,7 +6,7 @@ use App\Models\Reviews;
 @section('title', 'Profile') 
 @section('content')
 <div class="row">
-
+@include('c-components.btn-nav-back')
 <div class="container">
 <h2>
   @if ($owner)

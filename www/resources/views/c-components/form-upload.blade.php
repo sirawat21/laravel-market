@@ -27,7 +27,7 @@
             html = html + '<input class="form-control" name="image[]" type="file" multiple>'; 
             html = html + '<div class="input-group-append">';
             html = html + '<span class="input-group-text">';
-            html = html + '<a href="#" class="text-danger" onclick="removeImageForm(imgBox'+index+')">&nbsp;';
+            html = html + '<a href="#" class="text-danger" onclick="removeImageForm(imgBox'+index+')">';
             html = html + '<span class="fa fa-times"></span></a>'
             html = html + '</span></div></div>';
             $("#fromUploadGruop").append(html);

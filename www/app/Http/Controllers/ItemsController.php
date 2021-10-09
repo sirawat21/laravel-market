@@ -142,9 +142,15 @@ class ItemsController extends Controller
         foreach ($imgs as $img){
            array_push($images, $img['image']);
         }
+        /* Get Item owner info */
+        $owner = User::find($item->users_id);
+        /* Get Manufacturer info */
+        $manufacturer = Manufacturers::find($item->manufacturers_id);
         return view('pages.item.show', [
             'item' => $item,
-            'item_imgs' => $images
+            'item_imgs' => $images,
+            'manufacturer' => $manufacturer,
+            'owner' => $owner
         ]);
     }
 

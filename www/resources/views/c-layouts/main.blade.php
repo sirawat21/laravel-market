@@ -4,6 +4,7 @@
         <title>@yield('title')</title>
         @include('c-components.head')
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        @yield('head')
     </head>
     <body> 
         @include('c-components.navbar')

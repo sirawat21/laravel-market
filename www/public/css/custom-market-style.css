@@ -1,0 +1,26 @@
+.item-card {
+    width: 250px;
+    margin: 5px 5px 5px 5px;
+}
+.item-card:hover {
+    -moz-transform: translate(-3px, -3px);
+    -webkit-transform: translate(-3px, -3px);
+    -o-transform: translate(-3px, -3px);
+    -ms-transform: translate(-3px, -3px);
+    transform: translate(-3px, -3px);
+}
+.item-card-img {
+    max-height: 250px;
+    max-width: 250px;
+}
+.card-head-a {
+    text-decoration: none;
+}
+.card-head-a:hover {
+    text-decoration: none;
+    color: #800000;
+
+}
+.card-title {
+    color: #808080;
+}
