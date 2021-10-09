@@ -11,6 +11,17 @@
     <div class="card c-box-shadow">
       <div class="head-item">
         <span class="head-item-font">{{ $item->name }}</span>
+      <!-- Edit Link -->
+      @auth
+        @if (Auth::user()->id == $item->users_id || Auth::user()->type == "moderator")
+          <a type="button" href='{{ url("item/$item->id/edit") }}'
+            class="btn btn-sm btn-outline-warning">
+            <span class="fa fa-wrench"></span>
+            Edit
+          </a>
+        @endif
+      @endauth
+      <!-- End Edit Link -->
       </div>
     <div class="card-body">
       @include('c-components.image-slideshow', ['imgs' => $item_imgs])

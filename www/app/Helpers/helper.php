@@ -38,7 +38,7 @@ function helperCheckAuth() {
 /* Check permission query data */
 // $id of users_id in other tables
 function helperCheckQueryPermission($id) {
-    return (Auth::user()->type == "moderator" || Auth::user()->id == $id) ? ture : false;
+    return (Auth::user()->type == "moderator" || Auth::user()->id == $id) ? true : false;
 }
 
 /* Error Redirect Handler */

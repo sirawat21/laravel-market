@@ -24,6 +24,9 @@ class ItemsController extends Controller
             'only' => [
                 'create',
                 'store',
+                'edit',
+                'update',
+                'destroy'
             ]
         ]);
     }
@@ -124,8 +127,8 @@ class ItemsController extends Controller
                 'updated_at' => helperTimeNow()
             ]);
         }
-        return redirect('item/'.$item_id );
-    } // end store controller
+        return redirect('item/'.$item_id);
+    } // end store function
 
     /* Display the specified resource. */
     public function show($id)
@@ -152,39 +155,88 @@ class ItemsController extends Controller
             'manufacturer' => $manufacturer,
             'owner' => $owner
         ]);
-    }
+    } // end show function
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Display edit form of the specified resource. */
     public function edit($id)
     {
-        //
-    }
+        /* Get item by ID */
+        $item = Items::find($id);
+        /* Check exist item */
+        if ($item == null) {
+            return helperErrorPage("Item is not registed in the market yet.");
+        }
+        /* Check permission for edit item */
+        if (!helperCheckQueryPermission($item->users_id)) return redirect()->back();
+        /* Fetch related image */
+        $imgs = Images::All()->where('items_id', $id)->toArray();
+        $images = []; // accumurate image lists
+        foreach ($imgs as $img){
+           array_push($images, $img['image']);
+        }
+        /* Get Item owner info */
+        $owner = User::find($item->users_id);
+        /* Get Manufacturer info */
+        $manufacturer = Manufacturers::find($item->manufacturers_id);
+        return view('pages.item.edit', [
+            'item' => $item,
+            'item_imgs' => $images,
+            'manufacturer' => $manufacturer,
+            'owner' => $owner
+        ]);
+    } //end edit function
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Update the specified resource in storage. */
     public function update(Request $request, $id)
     {
-        //
-    }
+        /* Get item by ID */
+        $item = Items::find($id);
+        /* Check exist item */
+        if ($item == null) {
+            return helperErrorPage("Item is not registed in the market yet.");
+        }
+        /* Check permission for edit item */
+        if (!helperCheckQueryPermission($item->users_id)) return redirect()->back();
+        
+        $item->name = $request->name;
+        $item->price = $request->price;
+        $item->manufacturers_id = $request->manufacturers_id;
+        $item->origin_link = $request->origin_link;
+        $item->description = $request->description;
+        $item->updated_at = helperTimeNow();
+        $item->save();
+        return redirect('item/'.$id.'/edit');
+    } // end update function
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Remove the specified resource from storage. */
     public function destroy($id)
     {
-        //
-    }
+        /* Get item by ID */
+        $item = Items::find($id);
+        /* Check exist item */
+        if ($item == null) {
+            return helperErrorPage("Item is not registed in the market yet.");
+        }
+        /* Check permission for edit item */
+        if (!helperCheckQueryPermission($item->users_id)) return redirect()->back();
+        /* Get related image */
+        $imgs = Images::All()->where('items_id', '=', $item->id);
+        $imgArr = $imgs->toArray();
+        $imgFiles = [];
+        foreach ($imgArr as $img){
+            array_push($imgFiles, $img['image']);
+        }
+        /* Remove acutal image from server */
+        if (count($imgFiles) > 0) {
+            foreach ($imgFiles as $file) {
+                unlink(public_path().'/'.$file);
+            }
+        }
+        /* Remove image info */
+        foreach ($imgs as $img){
+            $img->delete();
+        }
+        $item->delete();
+        return redirect('/');
+    } // end destory function
 }

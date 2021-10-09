@@ -34,7 +34,7 @@
                   <div class="input-group-prepend">
                      <label for="price" class="form-label input-group-text">{{ __('Price') }}</label>
                   </div>
-                  <input name="price" type="number" style="text-align: right;"
+                  <input name="price" type="text" style="text-align: right;"
                      class="form-control @error('price') is-invalid @enderror" 
                      id="price" value="{{ old('price') }}">
                   <div class="input-group-append">
