@@ -1,7 +1,5 @@
 @php
-    use App\Models\Reviews;
     use App\Models\User;
-    $reviews = Reviews::All()->where('items_id', $item->id);
 @endphp
 <style>
     .review-list {
@@ -29,7 +27,7 @@
                 <span class="fa fa-thumbs-up "></span><span> 0 </span>
                 <span>&nbsp;<b>|</b>&nbsp;</span>
                 <span class="fa fa-thumbs-down"></span><span> 0 </span>
-                <form>
+                <form action="#">
                     <button class="btn btn-sm btn-outline-success">
                         <span class="fa fa-thumbs-up"></span>
                         Like
@@ -46,4 +44,5 @@
         </div>
     </div>
     @endforeach
+    {{ $reviews->links() }}
 </div>

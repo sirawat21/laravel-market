@@ -149,11 +149,15 @@ class ItemsController extends Controller
         $owner = User::find($item->users_id);
         /* Get Manufacturer info */
         $manufacturer = Manufacturers::find($item->manufacturers_id);
+        /* Get Pagination of reviews */
+        $reviews = Reviews::where('items_id', '=', $id)->paginate(5);
+        
         return view('pages.item.show', [
             'item' => $item,
             'item_imgs' => $images,
             'manufacturer' => $manufacturer,
-            'owner' => $owner
+            'owner' => $owner,
+            'reviews' => $reviews
         ]);
     } // end show function
 
