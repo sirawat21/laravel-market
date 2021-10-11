@@ -57,9 +57,28 @@ class CustomUserController extends Controller
     /* Show Profile Item*/
     public function item($id)
     {
+        // rand(int $min, int $max);
         $items = Items::All()->where('users_id', '=', $id);
+        /* Create recommandation items */
+        $followings = Followings::All()->where('users_id', $id);
+        if(!$followings->isEmpty()) {
+            $folloedUserIDs = $followings->toArray();
+            $followedList = [];
+            foreach ($folloedUserIDs as $folloedUserID ) {
+                array_push($followedList, $folloedUserID['following']);
+            }
+            $randID = array_rand($followedList);
+            $itemsRecommanded = Items::All()
+                ->where('users_id', '=', $followedList[$randID])->take(4);
+            if ($itemsRecommanded->isEmpty()){
+                $itemsRecommanded = Items::All()->random()->take(4);
+            }
+        } else {
+            $itemsRecommanded = Items::All()->random()->take(4);
+        }
         return view('pages.profile-item', [
             'items'=> $items,
+            'itemsRecommanded' => $itemsRecommanded
         ]);
     }
 }

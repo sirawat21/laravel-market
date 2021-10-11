@@ -7,6 +7,8 @@
 @section('content')
 @include('c-components.btn-nav-back')
 <div class="row">
+<!-- Notification Message -->
+@include('c-components.notification-bar', ['status' => 'danger'])
   <div class="col-md-12">
     <div class="card c-box-shadow">
       <div class="head-item">

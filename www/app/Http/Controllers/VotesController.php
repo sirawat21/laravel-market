@@ -3,9 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Votes;
 
 class VotesController extends Controller
 {
+    public function __construct() {
+        /* Regist permited controller */
+        $this->middleware('auth', [
+            'only' => [
+                'create',
+                'store',
+                'edit',
+                'update',
+                'destroy'
+            ]
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +69,7 @@ class VotesController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -67,8 +80,24 @@ class VotesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        /* Get vote by review id */
+        $vote = Votes::find($id);
+        /* Check like or dislike */
+        $noVote = $vote->like == 0 && $vote->dislike == 0 ;
+        if ( $noVote && $request->status == 1) {
+            $vote->like += 1;
+        } else if ( $noVote && $request->status == 0)
+            $vote->like += 1;
+        else if ($request->status == 1) {
+            $vote->like += 1;
+            $vote->dislike -= 1;
+        } else {
+            $vote->like -= 1;
+            $vote->dislike += 1;
+        }
+        $vote->save();
+        return redirect("item/$request->items_id");
     }
 
     /**

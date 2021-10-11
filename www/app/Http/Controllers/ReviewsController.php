@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Items;
 use App\Models\User;
 use App\Models\Reviews;
+use App\Models\Votes;
 
 
 class ReviewsController extends Controller
@@ -54,13 +55,22 @@ class ReviewsController extends Controller
     { 
         $rating = (isset($request->rating)) ?  $request->rating : 1;
         // $rating = (isset($request->rating)) ?  $request->rating : 0;
-        Reviews::create([
+        $review = Reviews::create([
             'message'  => $request->message,
             'rate'     => $rating,
             'items_id' => $request->items_id,
             'users_id' => Auth::user()->id,
             'created_at' => helperTimeNow(),
             'updated_at' => helperTimeNow()
+        ]);
+        /* Create review vote */
+        Votes::create([
+            'like' => 0,
+            'dislike' => 0,
+            'users_id' => Auth::user()->id,
+            'reviews_id' => $review->id,
+            'created_at' => helperTimeNow(),
+            'updated_at' => helperTimeNow()           
         ]);
         return redirect()->back();
     }
@@ -84,7 +94,15 @@ class ReviewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        /* Get item by ID */
+        $reviews = Reviews::find($id);
+        /* Check exist item */
+        if ($item == null) {
+            return helperErrorPage("A review not found.");
+        }
+        /* Check permission for edit item */
+        if (!helperCheckQueryPermission($item->users_id)) return redirect()->back();
+
     }
 
     /**
@@ -107,6 +125,17 @@ class ReviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /* Get item by ID */
+        $reviews = Reviews::find($id);
+        /* Check exist item */
+        if ($reviews == null) {
+            return helperErrorPage("A review not found.");
+        }
+        /* Get Item id */
+        $item = $reviews->items_id;
+        Votes::where('reviews_id', '=', $reviews->id)
+            ->first()->delete(); // delete vote       
+        $reviews->delete(); // delete review
+        return redirect('item/'.$item);
     }
 }

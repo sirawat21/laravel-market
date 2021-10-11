@@ -133,6 +133,7 @@ class ItemsController extends Controller
     /* Display the specified resource. */
     public function show($id)
     {
+        $noti = helperNotificationGet(); // get notification
         /* Get item by ID */
         $item = Items::find($id);
         /* Check exist item */
@@ -157,13 +158,15 @@ class ItemsController extends Controller
             'item_imgs' => $images,
             'manufacturer' => $manufacturer,
             'owner' => $owner,
-            'reviews' => $reviews
+            'reviews' => $reviews,
+            'notification' => $noti
         ]);
     } // end show function
 
     /* Display edit form of the specified resource. */
     public function edit($id)
     {
+        $noti = helperNotificationGet(); // get notification
         /* Get item by ID */
         $item = Items::find($id);
         /* Check exist item */
@@ -186,7 +189,8 @@ class ItemsController extends Controller
             'item' => $item,
             'item_imgs' => $images,
             'manufacturer' => $manufacturer,
-            'owner' => $owner
+            'owner' => $owner,
+            'notification' => $noti
         ]);
     } //end edit function
 
@@ -201,7 +205,15 @@ class ItemsController extends Controller
         }
         /* Check permission for edit item */
         if (!helperCheckQueryPermission($item->users_id)) return redirect()->back();
-        
+        /* Varidate client request */
+        $validated = validateCreateItem($request); 
+        if($validated->fails()){ 
+            // if error redirect back with error messages
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validated->messages());
+        }
+        /* update data */
         $item->name = $request->name;
         $item->price = $request->price;
         $item->manufacturers_id = $request->manufacturers_id;
