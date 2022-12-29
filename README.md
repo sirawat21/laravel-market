@@ -5,7 +5,7 @@ This repository is a project of the web development course at Griffith Universit
 ## Demo
 |Host|URL|
 |---|---|
-|host|url|
+|host|null|
 ## References
 - Laravel [sorce](https://laravel.com/docs/)
 - Eloquent [sorce](https://laravel.com/docs/8.x/eloquent)
